@@ -3,8 +3,8 @@ import html2canvas from "html2canvas";
 import "./App.css";
 
 function App() {
-  const [foodName, setFoodName] = useState("ทอดปลาเห็ด");
-  const [ownerName, setOwnerName] = useState("คุณอนงค์-คุณม้วย ถิ่นฐาน");
+  const [foodName, setFoodName] = useState("");
+  const [ownerName, setOwnerName] = useState("");
   const [foodImage, setFoodImage] = useState(null); // Store the uploaded image
   const postcardRef = useRef(null);
 
@@ -12,7 +12,7 @@ function App() {
     const postcardElement = postcardRef.current;
     html2canvas(postcardElement).then((canvas) => {
       const link = document.createElement("a");
-      link.download = "postcard.png";
+      link.download = `ป้ายโรงทาน - ${ownerName}.png`;
       link.href = canvas.toDataURL();
       link.click();
     });
